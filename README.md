@@ -2,8 +2,7 @@
 
 Build static sites using Ember CLI.
 
-<!-- `ember install ember-cli-static-site` -->
-**WIP, not yet published to NPM**
+`ember install ember-cli-static-site`
 
 This addon currently requires ember-cli-fastboot to also be installed as a dependency to your ember-cli application.
 
