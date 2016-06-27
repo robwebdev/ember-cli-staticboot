@@ -19,9 +19,6 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
-    "broccoli-merge-trees": "^1.1.1",
-    "broccoli-plugin": "^1.2.1",
-    "broccoli-replace": "^0.12.0",
     "ember-ajax": "^2.0.1",
     "ember-cli": "2.6.1",
     "ember-cli-app-version": "^1.0.0",
@@ -40,16 +37,19 @@
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-welcome-page": "^1.0.1",
-    "fastboot": "^1.0.0-beta.3",
-    "loader.js": "^4.0.1",
-    "rsvp": "^3.2.1"
+    "loader.js": "^4.0.1"
   },
   "keywords": [
     "ember-addon"
   ],
   "dependencies": {
+    "rsvp": "^3.2.1",
+    "broccoli-merge-trees": "^1.1.1",
+    "broccoli-plugin": "^1.2.1",
+    "broccoli-replace": "^0.12.0",
     "ember-cli-fastboot": "1.0.0-beta.4",
-    "ember-cli-babel": "^5.1.6"
+    "ember-cli-babel": "^5.1.6",
+    "fastboot": "^1.0.0-beta.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
