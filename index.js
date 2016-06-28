@@ -18,7 +18,7 @@ module.exports = {
       const replaceOptions = {
         files: ['index.html'],
         patterns: [{
-          match: /<.*?script.*?>.*?<\/.*?script.*?>/g,
+          match: /<.*?script src=\"assets\/.*.js\"?>.*?<\/.*?script.*?>/g,
           replacement: ''
         }]
       };

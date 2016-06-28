@@ -1,6 +1,6 @@
 # Ember-cli-static-site
 
-An addon for building static sites using Ember CLI and FastBoot. 
+An addon for building static sites using Ember CLI and FastBoot.
 
 
 `ember install ember-cli-static-site`
@@ -31,7 +31,7 @@ You need to tell the addon which routes to hit when the static site is generated
   });
 ```
 
-Script tags are stripped out of the generated pages therefore **the Ember app will not boot on the client**.
+`vendor.js` and `app.js` are not included in the generated pages therefore **the Ember app will not boot on the client**.
 
 ##`link-to`
 Use `link-to` helpers as you would normally. The `href` attribute will be modified with a path to a static page.
