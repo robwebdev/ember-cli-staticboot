@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-static-site",
   "version": "0.1.2",
-  "description": "Static site generation using ember-cli.",
+  "description": "An addon for building static sites using Ember CLI and FastBoot",
   "directories": {
     "doc": "doc",
     "test": "tests"
