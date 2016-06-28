@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-static-site",
   "version": "0.1.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Static site generation using ember-cli.",
   "directories": {
     "doc": "doc",
     "test": "tests"
