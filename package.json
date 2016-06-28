@@ -43,13 +43,14 @@
     "ember-addon"
   ],
   "dependencies": {
-    "rsvp": "^3.2.1",
     "broccoli-merge-trees": "^1.1.1",
     "broccoli-plugin": "^1.2.1",
     "broccoli-replace": "^0.12.0",
-    "ember-cli-fastboot": "1.0.0-beta.4",
     "ember-cli-babel": "^5.1.6",
-    "fastboot": "^1.0.0-beta.3"
+    "ember-cli-fastboot": "1.0.0-beta.4",
+    "fastboot": "^1.0.0-beta.3",
+    "mkdirp": "^0.5.1",
+    "rsvp": "^3.2.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
