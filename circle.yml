@@ -1,0 +1,9 @@
+machine:
+    node:
+        version: 4.2.2
+dependencies:
+    pre:
+        - npm install -g bower
+    override:
+        - npm i
+        - bower i
