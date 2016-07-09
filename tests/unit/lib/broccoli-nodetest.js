@@ -33,18 +33,40 @@ describe('fastbootPlugin', function() {
     return cleanupBuilders();
   });
 
-  it('it renders html files containing fastboots output for given paths', () => {
-    const options = {
-      paths: ['a', 'b']
-    };
-    return fastbootPlugin('.', options).then((result) => {
-      expect(result.files).to.deep.equal([
-        'a.html',
-        'b.html'
-      ]);
+  describe('when appendFileExtension is true', () => {
+    it('it renders html files containing fastboots output for given paths', () => {
+      const options = {
+        paths: ['a', 'b'],
+        appendFileExtension: true
+      };
+      return fastbootPlugin('.', options).then((result) => {
+        expect(result.files).to.deep.equal([
+          'a.html',
+          'b.html'
+        ]);
 
-      result.files.forEach((file) => {
-        expect(fs.readFileSync(path.join(result.directory, file), 'utf8')).to.equal('fastboot output');
+        result.files.forEach((file) => {
+          expect(fs.readFileSync(path.join(result.directory, file), 'utf8')).to.equal('fastboot output');
+        });
+      });
+    });
+  });
+
+  describe('when appendFileExtension is false', () => {
+    it('it renders html files containing fastboots output for given paths without an extension', () => {
+      const options = {
+        paths: ['a', 'b'],
+        appendFileExtension: false
+      };
+      return fastbootPlugin('.', options).then((result) => {
+        expect(result.files).to.deep.equal([
+          'a',
+          'b'
+        ]);
+
+        result.files.forEach((file) => {
+          expect(fs.readFileSync(path.join(result.directory, file), 'utf8')).to.equal('fastboot output');
+        });
       });
     });
   });
