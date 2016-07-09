@@ -11,7 +11,10 @@
     "start": "ember server",
     "test": "node tests/runner.js && ember try:each"
   },
-  "repository": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/robwebdev/ember-cli-static-site"
+  },
   "engines": {
     "node": ">= 4.0.0"
   },
