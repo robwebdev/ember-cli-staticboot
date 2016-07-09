@@ -3,7 +3,7 @@
 
 const mergeTrees = require('broccoli-merge-trees');
 const replace = require('broccoli-replace');
-const staticPages = require('./lib/broccoli/broccoli-fastboot-static-html');
+const staticPages = require('./lib/broccoli/broccoli-fastboot');
 
 module.exports = {
   name: 'ember-cli-static-site',
