@@ -29,7 +29,7 @@ An addon for generating static from an Ember App.
   });
 ```
 ### paths
-An array of paths that the addon will hit when the static site is generated.
+An array of paths that the addon will hit when the static pages are generated.
 *Default:* `[]`
 
 ### appendFileExtension
@@ -37,10 +37,8 @@ Whether generated file names should have a `.html` extension
 *Default:* `true`
 
 ### includeClientScripts
-Whether or not to include the client side scripts in the generated pages.
+Whether or not to include the client side scripts (app.js / vendor.js) in the generated pages.
 *Default:* `false`
-
-`vendor.js` and `app.js` are not included in the generated pages therefore **the Ember app will not boot on the client**.
 
 ##`link-to`
 Use `link-to` helpers as you would normally. The `href` attribute will be modified with a path to a static page.
