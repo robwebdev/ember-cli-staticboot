@@ -13,7 +13,7 @@ module.exports = {
 
     const defaultOptions = {
       paths: [],
-      appendFileExtension: true,
+      appendFileExtension: false,
       includeClientScripts: false
     };
 
@@ -29,7 +29,7 @@ module.exports = {
   config () {
     return {
       staticSite: {
-        appendFileExtension: true
+        appendFileExtension: this.options.appendFileExtension
       }
     };
   },

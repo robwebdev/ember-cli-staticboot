@@ -10,6 +10,8 @@ moduleForComponent('link-to', 'Integration | Component | link to', {
     const StubInstance = Ember.Object.extend({
       didCreateRootView () {}
     });
+    const ENV = this.container.owner.resolveRegistration('config:environment');
+    ENV.staticSite.appendFileExtension = true;
     this.registry.register('-application-instance:main', StubInstance);
     const router = this.container.lookup('router:main');
     router.startRouting(true);
