@@ -13,7 +13,7 @@ export default Ember.LinkComponent.extend({
     // Strip out query params
     const splitHref = href.split('?');
     if (splitHref.length > 1) {
-      Ember.Logger.warn('Query params are ignored when using link-to with ember-cli-static-site');
+      Ember.Logger.warn('Query params are ignored when using link-to with ember-cli-staticboot');
     }
     href = splitHref[0];
 

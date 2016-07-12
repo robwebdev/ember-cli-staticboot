@@ -1,9 +1,9 @@
-# Ember-cli-static-site
+# Ember-cli-staticboot
 
 An addon for building static sites using Ember CLI and FastBoot.
 
 
-`ember install ember-cli-static-site`
+`ember install ember-cli-staticboot`
 
 This addon currently requires ember-cli-fastboot to also be installed as a dependency to your ember-cli application.
 
@@ -16,20 +16,34 @@ This addon has been tested with Ember CLI 2.6.1.
 - [ember-cli-static-site-website](https://github.com/robwebdev/ember-cli-static-site-website) - The source for [ember-cli-static-site.com](http://www.ember-cli-static-com)
 
 ## Configuration
-You need to tell the addon which routes to hit when the static site is generated. This is done by passing a `ember-cli-static-site` config object to `ember-cli-build.js`. For example:
+
+###Example configuration
 
 ```js
   var app = new EmberApp(defaults, {
-    'ember-cli-static-site': {
+    'ember-cli-staticboot': {
       paths: [
         '/',
         '/posts',
         '/posts/1',
         '/posts/2'
-      ]
+      ],
+      appendFileExtension: true,
+      includeClientScripts: false
     }
   });
 ```
+### paths
+An array of paths that the addon will hit when the static site is generated.
+*Default:* `[]`
+
+### appendFileExtension
+Whether generated file names should have a `.html` extension
+*Default:* `true`
+
+### includeClientScripts
+Whether or not to include the client side scripts in the generated pages.
+*Default:* `false`
 
 `vendor.js` and `app.js` are not included in the generated pages therefore **the Ember app will not boot on the client**.
 

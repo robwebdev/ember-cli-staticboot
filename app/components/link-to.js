@@ -1,1 +1,1 @@
-export { default } from 'ember-cli-static-site/components/link-to';
+export { default } from 'ember-cli-staticboot/components/link-to';

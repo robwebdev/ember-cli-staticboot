@@ -1,5 +1,5 @@
 {
-  "name": "ember-cli-static-site",
+  "name": "ember-cli-staticboot",
   "version": "0.1.4",
   "description": "An addon for building static sites using Ember CLI and FastBoot",
   "directories": {
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type" : "git",
-    "url" : "https://github.com/robwebdev/ember-cli-static-site"
+    "url" : "https://github.com/robwebdev/ember-cli-staticboot"
   },
   "engines": {
     "node": ">= 4.0.0"

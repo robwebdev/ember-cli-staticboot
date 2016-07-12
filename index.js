@@ -6,7 +6,7 @@ const replace = require('broccoli-replace');
 const staticPages = require('./lib/broccoli/broccoli-fastboot');
 
 module.exports = {
-  name: 'ember-cli-static-site',
+  name: 'ember-cli-staticboot',
 
   included (app) {
     this._super.included.apply(this, arguments);
@@ -17,7 +17,7 @@ module.exports = {
       includeClientScripts: false
     };
 
-    this.options = app.options['ember-cli-static-site'] || {};
+    this.options = app.options['ember-cli-staticboot'] || {};
 
     for (var option in defaultOptions) {
       if (!this.options.hasOwnProperty(option)) {
