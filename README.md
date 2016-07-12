@@ -1,15 +1,10 @@
 # Ember-cli-staticboot
 
-An addon for building static sites using Ember CLI and FastBoot.
+An addon for generating static from an Ember App.
 
 
 `ember install ember-cli-staticboot`
 
-This addon currently requires ember-cli-fastboot to also be installed as a dependency to your ember-cli application.
-
-`ember install ember-cli-fastboot`
-
-This addon has been tested with Ember CLI 2.6.1.
 
 ##Examples
 - [robwebdev/fastboot-website](https://github.com/robwebdev/fastboot-website) - A fork of the FastBoot website, [converted to a static site](https://github.com/robwebdev/fastboot-website/commit/ce3bca25a980b9a668aeb32aef01e44bcf5c8e23) using ember-cli-static-site.

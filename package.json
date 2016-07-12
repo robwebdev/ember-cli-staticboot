@@ -61,6 +61,9 @@
     "mkdirp": "^0.5.1",
     "rsvp": "^3.2.1"
   },
+  "peerDependencies": {
+    "ember-cli-fastboot": "1.0.0-beta.4"
+  },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "after": "ember-cli-fastboot",
