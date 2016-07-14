@@ -4,9 +4,16 @@
 const mergeTrees = require('broccoli-merge-trees');
 const replace = require('broccoli-replace');
 const staticPages = require('./lib/broccoli/broccoli-fastboot');
+const Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'ember-cli-staticboot',
+
+  includedCommands: function() {
+    return {
+      'staticboot': require('./lib/commands/staticboot'),
+    };
+  },
 
   included (app) {
     this._super.included.apply(this, arguments);
@@ -27,6 +34,9 @@ module.exports = {
   },
 
   config () {
+    if (!this.options) {
+      return;
+    }
     return {
       staticSite: {
         appendFileExtension: this.options.appendFileExtension
@@ -53,6 +63,13 @@ module.exports = {
         });
         tree = mergeTrees([tree, staticTree], {overwrite: true});
       }
+
+      const assetsTree = new Funnel(tree, {
+        include: ['**/*'],
+        srcDir: 'assets',
+        destDir: 'staticboot/assets'
+      });
+      tree = mergeTrees([tree, assetsTree]);
     }
 
     return tree;

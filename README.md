@@ -5,10 +5,8 @@ An addon for generating static from an Ember App.
 
 `ember install ember-cli-staticboot`
 
-
-##Examples
-- [robwebdev/fastboot-website](https://github.com/robwebdev/fastboot-website) - A fork of the FastBoot website, [converted to a static site](https://github.com/robwebdev/fastboot-website/commit/ce3bca25a980b9a668aeb32aef01e44bcf5c8e23) using ember-cli-static-site.
-- [ember-cli-static-site-website](https://github.com/robwebdev/ember-cli-static-site-website) - The source for [ember-cli-static-site.com](http://www.ember-cli-static-com)
+## Running
+`ember staticboot`
 
 ## Configuration
 

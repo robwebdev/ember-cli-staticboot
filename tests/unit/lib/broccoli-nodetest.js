@@ -36,16 +36,18 @@ describe('fastbootPlugin', function() {
   describe('when appendFileExtension is true', () => {
     it('it renders html files containing fastboots output for given paths', () => {
       const options = {
-        paths: ['a', 'b'],
+        paths: ['/', 'a', 'b'],
         appendFileExtension: true
       };
       return fastbootPlugin('.', options).then((result) => {
         expect(result.files).to.deep.equal([
-          'a.html',
-          'b.html'
+          'staticboot/',
+          'staticboot/a.html',
+          'staticboot/b.html',
+          'staticboot/index.html'
         ]);
 
-        result.files.forEach((file) => {
+        result.files.splice(1).forEach((file) => {
           expect(fs.readFileSync(path.join(result.directory, file), 'utf8')).to.equal('fastboot output');
         });
       });
@@ -55,16 +57,18 @@ describe('fastbootPlugin', function() {
   describe('when appendFileExtension is false', () => {
     it('it renders html files containing fastboots output for given paths without an extension', () => {
       const options = {
-        paths: ['a', 'b'],
+        paths: ['/', 'a', 'b'],
         appendFileExtension: false
       };
       return fastbootPlugin('.', options).then((result) => {
         expect(result.files).to.deep.equal([
-          'a',
-          'b'
+          'staticboot/',
+          'staticboot/a',
+          'staticboot/b',
+          'staticboot/index.html'
         ]);
 
-        result.files.forEach((file) => {
+        result.files.splice(1).forEach((file) => {
           expect(fs.readFileSync(path.join(result.directory, file), 'utf8')).to.equal('fastboot output');
         });
       });
