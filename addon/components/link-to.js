@@ -6,7 +6,7 @@ export default Ember.LinkComponent.extend({
     const ENV = Ember.getOwner(this).resolveRegistration('config:environment');
     let href = this._super(...arguments);
 
-    if (!ENV.staticSite.appendFileExtension) {
+    if (!ENV.staticBoot.appendFileExtension) {
       return href;
     }
 

@@ -3,7 +3,7 @@
 
 const mergeTrees = require('broccoli-merge-trees');
 const replace = require('broccoli-replace');
-const staticPages = require('./lib/broccoli/broccoli-fastboot');
+const StaticBootBuild = require('./lib/broccoli/staticboot');
 const Funnel = require('broccoli-funnel');
 
 module.exports = {
@@ -38,39 +38,39 @@ module.exports = {
       return;
     }
     return {
-      staticSite: {
+      staticBoot: {
         appendFileExtension: this.options.appendFileExtension
       }
     };
   },
 
   postprocessTree (type, tree) {
-    if (type === 'all') {
-      if (!this.options.includeClientScripts) {
-        const replaceOptions = {
-          files: ['index.html'],
-          patterns: [{
-            match: /<.*?script src=\"assets\/.*.js\".*?>.*?<\/.*?script.*?>/g,
-            replacement: ''
-          }]
-        };
-        tree = replace(tree, replaceOptions);
-      }
-
-      if (!this.app.options.__is_building_fastboot__) {
-        const staticTree = staticPages(tree, {
-          paths: this.options.paths
-        });
-        tree = mergeTrees([tree, staticTree], {overwrite: true});
-      }
-
-      const assetsTree = new Funnel(tree, {
-        include: ['**/*'],
-        srcDir: 'assets',
-        destDir: 'staticboot/assets'
-      });
-      tree = mergeTrees([tree, assetsTree]);
+    if (type !== 'all' || this.app.options.__is_building_fastboot__) {
+      return tree;
     }
+
+    if (!this.options.includeClientScripts) {
+      const replaceOptions = {
+        files: ['index.html'],
+        patterns: [{
+          match: /<.*?script src=\"assets\/.*.js\".*?>.*?<\/.*?script.*?>/g,
+          replacement: ''
+        }]
+      };
+      tree = replace(tree, replaceOptions);
+    }
+
+    const staticBootTree = new StaticBootBuild(tree, {
+      paths: this.options.paths
+    });
+
+    const assetsTree = new Funnel(tree, {
+      include: ['**/*'],
+      srcDir: 'assets',
+      destDir: 'staticboot/assets'
+    });
+
+    tree = mergeTrees([tree, staticBootTree, assetsTree]);
 
     return tree;
   }

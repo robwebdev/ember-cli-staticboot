@@ -1,12 +1,12 @@
 # Ember-cli-staticboot
 
-An addon for generating static from an Ember App.
-
+An Ember CLI addon that allows you to prerender Ember.js apps to be served statically. Useful when the content of an Ember app is mostly static, this provides the benefits of using ember-cli-fastboot without the overhead of having to run an app server to prerender the pages as this is done up front at build time.
 
 `ember install ember-cli-staticboot`
 
 ## Running
 `ember staticboot`
+This will build the static output into `dist/staticboot`
 
 ## Configuration
 
@@ -40,9 +40,6 @@ Whether or not to include the client side scripts (app.js / vendor.js) in the ge
 
 ##`link-to`
 Use `link-to` helpers as you would normally. The `href` attribute will be modified with a path to a static page.
-
-##`build` and `serve`
-Use `ember build` and `ember serve` as you would normally. The static pages will be output to the dist path like a regular build.
 
 ## Collaboration
 ### Installation

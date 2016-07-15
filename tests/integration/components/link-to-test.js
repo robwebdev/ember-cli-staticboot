@@ -11,7 +11,7 @@ moduleForComponent('link-to', 'Integration | Component | link to', {
       didCreateRootView () {}
     });
     const ENV = this.container.owner.resolveRegistration('config:environment');
-    ENV.staticSite.appendFileExtension = true;
+    ENV.staticBoot.appendFileExtension = true;
     this.registry.register('-application-instance:main', StubInstance);
     const router = this.container.lookup('router:main');
     router.startRouting(true);

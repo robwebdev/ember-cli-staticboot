@@ -21,11 +21,11 @@ mock('fastboot', function () {
   };
 });
 
-const _fastbootPlugin = require('../../../lib/broccoli/broccoli-fastboot');
+const _staticBootPlugin = require('../../../lib/broccoli/staticboot');
 
-describe('fastbootPlugin', function() {
-  const fastbootPlugin = makeTestHelper({
-    subject: _fastbootPlugin,
+describe('staticBootPlugin', function() {
+  const staticBootPlugin = makeTestHelper({
+    subject: _staticBootPlugin,
     fixturePath: fixtures
   });
 
@@ -39,7 +39,7 @@ describe('fastbootPlugin', function() {
         paths: ['/', 'a', 'b'],
         appendFileExtension: true
       };
-      return fastbootPlugin('.', options).then((result) => {
+      return staticBootPlugin('.', options).then((result) => {
         expect(result.files).to.deep.equal([
           'staticboot/',
           'staticboot/a.html',
@@ -60,7 +60,7 @@ describe('fastbootPlugin', function() {
         paths: ['/', 'a', 'b'],
         appendFileExtension: false
       };
-      return fastbootPlugin('.', options).then((result) => {
+      return staticBootPlugin('.', options).then((result) => {
         expect(result.files).to.deep.equal([
           'staticboot/',
           'staticboot/a',
