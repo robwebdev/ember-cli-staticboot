@@ -6,6 +6,13 @@ const replace = require('broccoli-replace');
 const StaticBootBuild = require('./lib/broccoli/staticboot');
 const Funnel = require('broccoli-funnel');
 
+const defaultOptions = {
+  paths: [],
+  destDir: 'staticboot',
+  include: ['**/*'],
+  includeClientScripts: false
+};
+
 module.exports = {
   name: 'ember-cli-staticboot',
 
@@ -17,12 +24,6 @@ module.exports = {
 
   included (app) {
     this._super.included.apply(this, arguments);
-
-    const defaultOptions = {
-      paths: [],
-      appendFileExtension: false,
-      includeClientScripts: false
-    };
 
     this.options = app.options['ember-cli-staticboot'] || {};
 
@@ -39,7 +40,6 @@ module.exports = {
     }
     return {
       staticBoot: {
-        appendFileExtension: this.options.appendFileExtension
       }
     };
   },
@@ -60,8 +60,12 @@ module.exports = {
       tree = replace(tree, replaceOptions);
     }
 
-    const staticBootTree = new StaticBootBuild(tree, {
+    const staticBootTree = new Funnel(new StaticBootBuild(tree, {
       paths: this.options.paths
+    }), {
+      include: this.options.include,
+      srcDir: './',
+      destDir: this.options.destDir
     });
 
     const assetsTree = new Funnel(tree, {
@@ -70,7 +74,13 @@ module.exports = {
       destDir: 'staticboot/assets'
     });
 
-    tree = mergeTrees([tree, staticBootTree, assetsTree]);
+    let mergeOptions = {};
+
+    if (this.options.destDir !== defaultOptions.destDir) {
+      mergeOptions.overwrite = true;
+    }
+
+    tree = mergeTrees([tree, staticBootTree, assetsTree], mergeOptions);
 
     return tree;
   }
