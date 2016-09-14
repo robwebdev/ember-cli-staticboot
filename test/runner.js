@@ -8,7 +8,7 @@ var mocha = new Mocha({
   reporter: 'spec'
 });
 
-var root = 'tests/';
+var root = 'test/';
 
 function addFiles(mocha, files) {
   glob.sync(root + files).forEach(mocha.addFile.bind(mocha));
