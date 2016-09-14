@@ -22,7 +22,7 @@ mock('fastboot', function () {
   };
 });
 
-const _staticBootPlugin = require('../../../lib/broccoli/staticboot');
+const _staticBootPlugin = require('../../lib/broccoli/staticboot');
 
 describe('staticBootPlugin', function() {
   const staticBootPlugin = makeTestHelper({
