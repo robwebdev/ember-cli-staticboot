@@ -21,7 +21,6 @@ This will build the static output into `dist/staticboot`
         '/posts/1',
         '/posts/2'
       ],
-      appendFileExtension: true,
       includeClientScripts: false
     }
   });
@@ -29,10 +28,6 @@ This will build the static output into `dist/staticboot`
 ### paths
 An array of paths that the addon will hit when the static pages are generated.
 *Default:* `[]`
-
-### appendFileExtension
-Whether generated file names should have a `.html` extension
-*Default:* `true`
 
 ### includeClientScripts
 Whether or not to include the client side scripts (app.js / vendor.js) in the generated pages.
