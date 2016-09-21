@@ -20,18 +20,13 @@ This will build the static output into `dist/staticboot`
         '/posts',
         '/posts/1',
         '/posts/2'
-      ],
-      includeClientScripts: false
+      ]
     }
   });
 ```
 ### paths
 An array of paths that the addon will hit when the static pages are generated.
 *Default:* `[]`
-
-### includeClientScripts
-Whether or not to include the client side scripts (app.js / vendor.js) in the generated pages.
-*Default:* `false`
 
 ##`link-to`
 Use `link-to` helpers as you would normally. The `href` attribute will be modified with a path to a static page.
