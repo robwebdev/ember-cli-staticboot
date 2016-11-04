@@ -66,10 +66,10 @@
     "core-object": "^2.0.5",
     "portfinder": "^1.0.3",
     "silent-error": "^1.0.0",
-    "ember-cli-fastboot": "1.0.0-beta.9"
+    "ember-cli-fastboot": "1.0.0-beta.12"
   },
   "peerDependencies": {
-    "ember-cli-fastboot": "1.0.0-beta.9"
+    "ember-cli-fastboot": "^1.0.0-beta.12"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
