@@ -5,8 +5,9 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     'ember-cli-staticboot': {
-      paths: ['/']
-    }
+      paths: ['/'],
+      destDir: ''
+    },
   });
 
   /*
