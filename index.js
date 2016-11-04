@@ -56,9 +56,9 @@ module.exports = {
     });
 
     const assetsTree = new Funnel(tree, {
-      include: ['**/*'],
-      srcDir: 'assets',
-      destDir: 'staticboot/assets'
+      exclude: ['fastboot/**/*', 'index.html', 'tests/**/*', 'testem.js'],
+      srcDir: './',
+      destDir: 'staticboot'
     });
 
     let mergeOptions = {};
