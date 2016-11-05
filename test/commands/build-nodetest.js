@@ -7,7 +7,7 @@ chai.use(require('chai-fs'));
 const jsonfile = require('jsonfile');
 const addonPackageJson = jsonfile.readFileSync('package.json');
 const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
-const TIMEOUT = 300000;
+const TIMEOUT = 400000;
 
 function prepareApp (app) {
   // AddonTestApp.create doesn't install peerDependencies of the
@@ -47,6 +47,9 @@ describe('default configuration', function() {
         expect(app.filePath('dist/staticboot/index.html')).to.have.content.that.match(
           /<h1>Dummy App<\/h1>/
         );
+
+        // https://github.com/chaijs/chai-fs/issues/9#issuecomment-223789489
+        expect(app.filePath('dist/staticboot/package.json')).to.not.be.a.path();
       });
   });
 });

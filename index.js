@@ -48,31 +48,30 @@ module.exports = {
     }
     const trees = [tree];
     const destDirIsRoot = this.options.destDir === '';
+    const mergeOptions = {};
 
-    trees.push(new Funnel(new StaticBootBuild(tree, {
+    let staticBootTree = new StaticBootBuild(tree, {
       paths: this.options.paths
-    }), {
+    });
+
+    staticBootTree = new Funnel(staticBootTree, {
       include: this.options.include,
       srcDir: './',
       destDir: this.options.destDir
-    }));
+    });
 
-    if (!destDirIsRoot) {
+    trees.push(staticBootTree);
+
+    if (destDirIsRoot) {
+      mergeOptions.overwrite = true;
+    } else  {
       trees.push(new Funnel(tree, {
-          exclude: ['fastboot/**/*', 'index.html', 'tests/**/*', 'testem.js'],
+          exclude: ['fastboot/**/*', 'index.html', 'tests/**/*', 'testem.js', 'package.json'],
           srcDir: './',
           destDir: this.options.destDir
       }));
     }
 
-    let mergeOptions = {};
-
-    if (destDirIsRoot) {
-      mergeOptions.overwrite = true;
-    }
-
-    tree = mergeTrees(trees, mergeOptions);
-
-    return tree;
+    return mergeTrees(trees, mergeOptions);
   }
 };

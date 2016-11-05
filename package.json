@@ -56,18 +56,19 @@
     "ember-addon"
   ],
   "dependencies": {
+    "broccoli-file-remover": "^0.3.1",
     "broccoli-funnel": "^1.0.3",
     "broccoli-merge-trees": "^1.1.1",
     "broccoli-plugin": "^1.2.1",
     "broccoli-replace": "^0.12.0",
+    "core-object": "^2.0.5",
     "ember-cli-babel": "^5.1.7",
+    "ember-cli-fastboot": "1.0.0-beta.12",
     "fastboot": "^1.0.0-beta.3",
     "mkdirp": "^0.5.1",
-    "rsvp": "^3.2.1",
-    "core-object": "^2.0.5",
     "portfinder": "^1.0.3",
-    "silent-error": "^1.0.0",
-    "ember-cli-fastboot": "1.0.0-beta.12"
+    "rsvp": "^3.2.1",
+    "silent-error": "^1.0.0"
   },
   "peerDependencies": {
     "ember-cli-fastboot": "^1.0.0-beta.12"
