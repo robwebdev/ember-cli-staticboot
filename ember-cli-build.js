@@ -6,7 +6,7 @@ module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
     'ember-cli-staticboot': {
       paths: ['/']
-    }
+    },
   });
 
   /*

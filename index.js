@@ -46,29 +46,32 @@ module.exports = {
     if (type !== 'all' || this.app.options.__is_building_fastboot__) {
       return tree;
     }
+    const trees = [tree];
+    const destDirIsRoot = this.options.destDir === '';
+    const mergeOptions = {};
 
-    const staticBootTree = new Funnel(new StaticBootBuild(tree, {
+    let staticBootTree = new StaticBootBuild(tree, {
       paths: this.options.paths
-    }), {
+    });
+
+    staticBootTree = new Funnel(staticBootTree, {
       include: this.options.include,
       srcDir: './',
       destDir: this.options.destDir
     });
 
-    const assetsTree = new Funnel(tree, {
-      include: ['**/*'],
-      srcDir: 'assets',
-      destDir: 'staticboot/assets'
-    });
+    trees.push(staticBootTree);
 
-    let mergeOptions = {};
-
-    if (this.options.destDir !== defaultOptions.destDir) {
+    if (destDirIsRoot) {
       mergeOptions.overwrite = true;
+    } else  {
+      trees.push(new Funnel(tree, {
+          exclude: ['fastboot/**/*', 'index.html', 'tests/**/*', 'testem.js', 'package.json'],
+          srcDir: './',
+          destDir: this.options.destDir
+      }));
     }
 
-    tree = mergeTrees([tree, staticBootTree, assetsTree], mergeOptions);
-
-    return tree;
+    return mergeTrees(trees, mergeOptions);
   }
 };
