@@ -10,7 +10,8 @@ const defaultOptions = {
   paths: [],
   destDir: 'staticboot',
   include: ['**/*'],
-  includeClientScripts: true
+  includeClientScripts: true,
+  autoDiscover: false
 };
 
 module.exports = {
@@ -54,7 +55,8 @@ module.exports = {
     const mergeOptions = {};
 
     let staticBootTree = new StaticBootBuild(tree, {
-      paths: this.options.paths
+      paths: this.options.paths,
+      autoDiscover: this.options.autoDiscover
     });
 
     // If required, remove client scripts
