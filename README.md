@@ -33,6 +33,10 @@ An array of paths that the addon will hit when the static pages are generated.
 Destination directory for the staticboot build within `dist`.
 *Default:* `staticboot`
 
+### includeClientScripts
+Whether or not to include the client side scripts (app.js / vendor.js) in the generated pages.
+*Default:* `true`
+
 ##`link-to`
 Use `link-to` helpers as you would normally. The `href` attribute will be modified with a path to a static page.
 
