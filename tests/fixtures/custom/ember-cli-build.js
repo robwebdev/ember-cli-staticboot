@@ -6,7 +6,8 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     'ember-cli-staticboot': {
       paths: ['/'],
-      destDir: ''
+      destDir: '',
+      includeClientScripts: false
     },
   });
 
