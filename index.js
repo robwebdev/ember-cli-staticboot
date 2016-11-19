@@ -49,18 +49,6 @@ module.exports = {
       return tree;
     }
 
-    // If required, remove client scripts
-    if (!this.options.includeClientScripts) {
-      const replaceOptions = {
-        files: ['index.html'],
-        patterns: [{
-          match: /<.*?script src=\"\/assets\/.*.js\".*?>.*?<\/.*?script.*?>/g,
-          replacement: ''
-        }]
-      };
-      tree = replace(tree, replaceOptions);
-    }
-
     const trees = [tree];
     const destDirIsRoot = this.options.destDir === '';
     const mergeOptions = {};
@@ -68,6 +56,18 @@ module.exports = {
     let staticBootTree = new StaticBootBuild(tree, {
       paths: this.options.paths
     });
+
+    // If required, remove client scripts
+    if (!this.options.includeClientScripts) {
+      const replaceOptions = {
+        files: ['**/index.html'],
+        patterns: [{
+          match: /<.*?script src=\"\/assets\/.*.js\".*?>.*?<\/.*?script.*?>/g,
+          replacement: ''
+        }]
+      };
+      staticBootTree = replace(staticBootTree, replaceOptions);
+    }
 
     staticBootTree = new Funnel(staticBootTree, {
       include: this.options.include,
