@@ -1,5 +1,7 @@
 # Ember-cli-staticboot
 
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-staticboot.svg)](https://emberobserver.com/addons/ember-cli-staticboot)
+
 An Ember CLI addon that allows you to prerender Ember.js apps to be served statically. Useful when the content of an Ember app is mostly static, this provides the benefits of using ember-cli-fastboot without the overhead of having to run an app server to prerender the pages as this is done up front at build time.
 
 `ember install ember-cli-staticboot`
