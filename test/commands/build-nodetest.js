@@ -47,6 +47,9 @@ describe('default configuration', function() {
         expect(app.filePath('dist/staticboot/index.html')).to.have.content.that.match(
           /<h1>Dummy App<\/h1>/
         );
+        expect(app.filePath('dist/staticboot/index.html')).to.have.content.that.match(
+          /<.*?script src=\"\/assets\/.*.js\".*?>.*?<\/.*?script.*?>/
+        );
 
         // https://github.com/chaijs/chai-fs/issues/9#issuecomment-223789489
         expect(app.filePath('dist/staticboot/package.json')).to.not.be.a.path();
@@ -74,6 +77,9 @@ describe('custom configuration', function() {
         expect(app.filePath('dist/index.html')).to.be.a.file();
         expect(app.filePath('dist/index.html')).to.have.content.that.match(
           /<h1>Dummy App<\/h1>/
+        );
+        expect(app.filePath('dist/index.html')).to.not.have.content.that.match(
+          /<.*?script src=\"\/assets\/.*.js\".*?>.*?<\/.*?script.*?>/
         );
       });
   });
