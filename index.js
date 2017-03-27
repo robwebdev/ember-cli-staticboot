@@ -25,17 +25,17 @@ module.exports = {
   included (app) {
     this._super.included.apply(this, arguments);
 
-    this.options = app.options['ember-cli-staticboot'] || {};
+    this.staticbootOptions = app.options['ember-cli-staticboot'] || {};
 
     for (var option in defaultOptions) {
-      if (!this.options.hasOwnProperty(option)) {
-        this.options[option] = defaultOptions[option];
+      if (!this.staticbootOptions.hasOwnProperty(option)) {
+        this.staticbootOptions[option] = defaultOptions[option];
       }
     }
   },
 
   config () {
-    if (!this.options) {
+    if (!this.staticbootOptions) {
       return;
     }
     return {
@@ -50,15 +50,15 @@ module.exports = {
     }
 
     const trees = [tree];
-    const destDirIsRoot = this.options.destDir === '';
+    const destDirIsRoot = this.staticbootOptions.destDir === '';
     const mergeOptions = {};
 
     let staticBootTree = new StaticBootBuild(tree, {
-      paths: this.options.paths
+      paths: this.staticbootOptions.paths
     });
 
     // If required, remove client scripts
-    if (!this.options.includeClientScripts) {
+    if (!this.staticbootOptions.includeClientScripts) {
       const replaceOptions = {
         files: ['**/index.html'],
         patterns: [{
@@ -70,9 +70,9 @@ module.exports = {
     }
 
     staticBootTree = new Funnel(staticBootTree, {
-      include: this.options.include,
+      include: this.staticbootOptions.include,
       srcDir: './',
-      destDir: this.options.destDir
+      destDir: this.staticbootOptions.destDir
     });
 
     trees.push(staticBootTree);
@@ -83,7 +83,7 @@ module.exports = {
       trees.push(new Funnel(tree, {
           exclude: ['fastboot/**/*', 'index.html', 'tests/**/*', 'testem.js', 'package.json'],
           srcDir: './',
-          destDir: this.options.destDir
+          destDir: this.staticbootOptions.destDir
       }));
     }
 
