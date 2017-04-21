@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-staticboot",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "An Ember CLI addon that allows you to prerender Ember.js apps to be served statically.",
   "directories": {
     "doc": "doc",
