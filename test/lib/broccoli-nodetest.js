@@ -12,12 +12,14 @@ const path = require('path');
 const RSVP = require('rsvp');
 const fixtures = path.join(process.cwd(), 'tests/fixtures');
 
-mock('fastboot', function () {
+mock('fastboot', function() {
   return {
-    visit () {
-      return RSVP.Promise.resolve({html () {
-        return 'fastboot output';
-      }});
+    visit() {
+      return RSVP.Promise.resolve({
+        html() {
+          return 'fastboot output';
+        }
+      });
     }
   };
 });
@@ -36,9 +38,9 @@ describe('staticBootPlugin', function() {
 
   it('should output all defined paths as directories with index.html', () => {
     const options = {
-      paths: ['/', 'a', 'b', 'a/b'],
+      paths: ['/', 'a', 'b', 'a/b']
     };
-    return staticBootPlugin('.', options).then((result) => {
+    return staticBootPlugin('.', options).then(result => {
       expect(result.files).to.deep.equal([
         'a/',
         'a/b/',
@@ -49,7 +51,7 @@ describe('staticBootPlugin', function() {
         'index.html'
       ]);
 
-      result.files.splice(1).forEach((file) => {
+      result.files.splice(1).forEach(file => {
         let filePath = path.join(result.directory, file);
 
         if (fs.lstatSync(filePath).isFile()) {

@@ -10,17 +10,13 @@ const AddonTestApp = require('ember-cli-addon-tests').AddonTestApp;
 const TIMEOUT = 400000;
 
 function prepareApp (app) {
-  // AddonTestApp.create doesn't install peerDependencies of the
+  // AddonTestApp.create doesn't install devDependencies of the
   // addon under test as it's just symlinked
-  const emberCLIFastbootVersion = addonPackageJson.peerDependencies['ember-cli-fastboot'];
+  const emberCLIFastbootVersion = addonPackageJson.devDependencies['ember-cli-fastboot'];
   return app.runEmberCommand('install', `ember-cli-fastboot@${emberCLIFastbootVersion}`);
 }
 
 describe('package.json', function () {
-  it('includes ember-cli-fastboot as a peer dependency', function () {
-    expect(addonPackageJson.peerDependencies['ember-cli-fastboot']).to.be.a('string');
-  });
-
   it('runs after ember-cli-fastboot in the pipeline', function () {
     expect(addonPackageJson['ember-addon'].after).to.equal('ember-cli-fastboot');
   });
@@ -32,13 +28,16 @@ describe('default configuration', function() {
   let app;
 
   before(function() {
+    console.log('before');
     app = new AddonTestApp();
     return app.create('default').then(prepareApp);
   });
 
   it("builds into staticboot", function() {
+    console.log('ready');
     return app.runEmberCommand('build')
       .then(function() {
+        console.log('yolo');
         expect(app.filePath('dist/staticboot/robots.txt')).to.be.a.file();
         expect(app.filePath('dist/staticboot/crossdomain.xml')).to.be.a.file();
         expect(app.filePath('dist/staticboot/assets/vendor.js')).to.be.a.file();
@@ -64,7 +63,7 @@ describe('custom configuration', function() {
 
   before(function() {
     app = new AddonTestApp();
-    return app.create('custom').then(prepareApp);
+    return app.create('custom');
   });
 
   it("builds into root of dist", function() {
