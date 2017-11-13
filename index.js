@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 const mergeTrees = require('broccoli-merge-trees');
@@ -45,7 +45,7 @@ module.exports = {
   },
 
   postprocessTree (type, tree) {
-    if (type !== 'all' || this.app.options.__is_building_fastboot__) {
+    if (type !== 'all') {
       return tree;
     }
 
