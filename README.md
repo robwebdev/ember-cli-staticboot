@@ -12,7 +12,7 @@ This will build the static output into `dist/staticboot` or the configured `dest
 
 ## Configuration
 
-###Example configuration
+### Example configuration
 
 ```js
   var app = new EmberApp(defaults, {
